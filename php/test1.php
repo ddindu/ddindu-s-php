@@ -178,7 +178,7 @@ $avg = array();
 
     for($i=0;$i<3;$i++){
         for($j=0;$j<5;$j++){
-            echo ('$score[i][j] = '.$score[$i][$j]."<br>");    
+            echo ($score.'['.$i.']['.$j.']'.' = '.$score[$i][$j]."<br>");    
             $num[$i] += $score[$i][$j];
         }   
         $avg[$i] = $num[$i]/5;
