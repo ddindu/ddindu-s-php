@@ -188,3 +188,39 @@ $avg = array();
     echo ($student_num[$k]. "번째 학생의 점수 => 합계:".$num[$k].",평균".$avg[$k]."<br>");
 }
 ?>
+
+<?php
+    echo "<br>";
+    function plus($a,$b){
+        $c = $a + $b;
+        echo $c;
+    }
+    plus(15,25);
+    echo "<br>";
+    plus (1500,3500);
+?>
+<?php
+    echo "<br>";
+    function plus_1($a,$b){
+        $c = $a + $b;
+        return $c; 
+    }
+    $r = plus_1(15,25);
+    echo $r."<br>";
+    $r=plus_1(3500,1500);
+    echo $r."<br>";
+    global $num;
+    $num = 15;
+?>
+
+<?php
+    echo __File__."<br>".$num."<br>";
+    function hap($a,$b){
+        $sum = 0 ;
+        while ($a<=$b){
+            $sum = $sum+$a;
+            $a++;
+        }return $sum;
+    } $total = hap($from=1,$to=100);
+    echo "$from 에서 $to 까지의 합 : $total";
+?>
