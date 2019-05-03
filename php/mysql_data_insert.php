@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color:oldlace;">
+<html>
     <head>
         <meta charset='utf-8'>
     </head>
@@ -7,15 +7,15 @@
         $servername = "localhost";
         $username = "root";
         $password = "apmsetup";
-        $dbname = "c";
+        $dbname = "HumanInfo";
         
         $conn = new mysqli($servername,$username,$password,$dbname);
 
         if($conn->connect_error){
             die("Connection falied: ".$conn->connect_error);
         }
-        $sql = "INSERT INTO d (classNumber,name,phoneNumber,password)
-            VALUES ('15','chang','0102222','1234')";
+        $sql = "INSERT INTO HumanInfo (Age,name,address)
+            VALUES ('20','kjs','Incheon')";
         if($conn->query($sql)===TRUE){
             echo "New record created successfully";
         }else{
