@@ -7,23 +7,21 @@
         $servername = "localhost";
         $username = "root";
         $password = "apmsetup";
-        $dbname = "c";
+        $dbname = "humaninfo";
+
+        $add = $_POST["address"];
+        $name = $_POST["name"];
         
         $conn = new mysqli($servername,$username,$password,$dbname);
 
         if($conn->connect_error){
             die("Connection falied: ".$conn->connect_error);
         }
-        $sql = "SELECT classNumber,name,phoneNumber,password FROM d";
-
-        $result = $conn->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                echo "<br>"."cln : ".$row["classNumber"]."<br>"."name : ".$row["name"]."<br>"."phn : ".$row["phoneNumber"]
-                ."<br>"."pass : ".$row["password"];
-            }
+        $sql = "UPDATE humaninfo SET name = '$name' WHERE address= '$add' ";
+        if($conn->query($sql)===TRUE){
+            echo "Record updated successfully";
         }else{
-            echo "0 results";
+            echo "Error updating record : ".$conn->error;
         }
         $conn->close();
     ?>

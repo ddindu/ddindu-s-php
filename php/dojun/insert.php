@@ -7,23 +7,23 @@
         $servername = "localhost";
         $username = "root";
         $password = "apmsetup";
-        $dbname = "c";
+        $dbname = "HumanInfo";
+
+        $age = $_POST["Age"];
+        $nm = $_POST["name"];
+        $add = $_POST["address"];
         
         $conn = new mysqli($servername,$username,$password,$dbname);
 
         if($conn->connect_error){
             die("Connection falied: ".$conn->connect_error);
         }
-        $sql = "SELECT classNumber,name,phoneNumber,password FROM d";
-
-        $result = $conn->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                echo "<br>"."cln : ".$row["classNumber"]."<br>"."name : ".$row["name"]."<br>"."phn : ".$row["phoneNumber"]
-                ."<br>"."pass : ".$row["password"];
-            }
+        $sql = "INSERT INTO HumanInfo (Age,name,address)
+            VALUES ($age,$nm,$add)";
+        if($conn->query($sql)===TRUE){
+            echo "New record created successfully";
         }else{
-            echo "0 results";
+            echo "Error:".$sql."<br>".$conn->error;
         }
         $conn->close();
     ?>

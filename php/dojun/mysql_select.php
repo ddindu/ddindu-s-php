@@ -19,8 +19,11 @@
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                echo "<br>"."cln : ".$row["classNumber"]."<br>"."name : ".$row["name"]."<br>"."phn : ".$row["phoneNumber"]
-                ."<br>"."pass : ".$row["password"];
+                $json_1 = json_encode($row["classNumber"]);
+                $json_2 = json_encode($row["name"]);
+                $json_3 = json_encode($row["phoneNumber"]);0
+                $json_4 = json_encode($row["password"]);
+                echo "{"."Age : ".$json_1.", "."name : ".$json_2.", "."phn : ".$json_3.", "."pass : ".$json_4."}".", ";
             }
         }else{
             echo "0 results";
