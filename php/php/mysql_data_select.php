@@ -8,20 +8,19 @@
         $username = "root";
         $password = "apmsetup";
         $dbname = "c";
-        $cln = $_POST['classNumber'];
-        $nm = $_POST['name'];
-        $phn = $_POST['phoneNumber'];
-        $pw = $_POST['password'];       
         
-        $conn = new mysqli($servername,$username,$password,$dbname); 
+        $conn = new mysqli($servername,$username,$password,$dbname);
+
         if($conn->connect_error){
             die("Connection falied: ".$conn->connect_error);
         }
-        $sql = "SELECT * FROM d WHERE classNumber = $cln AND name = $nm";
+        $sql = "SELECT classNumber,name,phoneNumber,password FROM d";
+
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                echo $row["phoneNumber"];
+                echo "<br>"."cln : ".$row["classNumber"]."<br>"."name : ".$row["name"]."<br>"."phn : ".$row["phoneNumber"]
+                ."<br>"."pass : ".$row["password"];
             }
         }else{
             echo "0 results";
